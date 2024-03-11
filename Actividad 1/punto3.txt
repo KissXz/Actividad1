@@ -1,0 +1,49 @@
+using System;
+
+class Actividad1
+{
+    static void Main()
+    {
+        Console.WriteLine("Ingrese el número de empleados de la empresa El Buen Vestir: ");
+        int totalEmpleados = Convert.ToInt32(Console.ReadLine());
+
+        double totalSueldosNetos = 0;
+        double totalRenta = 0;
+        double totalAFP = 0;
+        double totalISSS = 0;
+
+        for (int i = 1; i <= totalEmpleados; i++)
+        {
+            Console.WriteLine($"\nDatos del empleado #{i}");
+
+            Console.WriteLine("Ingrese el sueldo base del empleado: ");
+            double sueldoBase = Convert.ToDouble(Console.ReadLine());
+
+            double renta = sueldoBase * 0.1;
+            double afp = sueldoBase * 0.05;
+            double isss = sueldoBase * 0.04;
+
+            double sueldoNeto = sueldoBase - renta - afp - isss;
+
+            totalSueldosNetos += sueldoNeto;
+            totalRenta += renta;
+            totalAFP += afp;
+            totalISSS += isss;
+
+            Console.WriteLine("\nReporte para el empleado:");
+            Console.WriteLine($"Sueldo base: {sueldoBase:C}");
+            Console.WriteLine($"Descuentos:");
+            Console.WriteLine($"- Renta: {renta:C}");
+            Console.WriteLine($"- AFP Confía: {afp:C}");
+            Console.WriteLine($"- ISSS: {isss:C}");
+            Console.WriteLine($"Sueldo neto: {sueldoNeto:C}");
+        }
+
+        Console.WriteLine("\nReporte Contable al Gerente:");
+        Console.WriteLine($"Total a pagar en sueldos netos: {totalSueldosNetos:C}");
+        Console.WriteLine($"Totales retenidos:");
+        Console.WriteLine($"- Renta: {totalRenta:C}");
+        Console.WriteLine($"- AFP: {totalAFP:C}");
+        Console.WriteLine($"- ISSS: {totalISSS:C}");
+    }
+}
